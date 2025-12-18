@@ -65,11 +65,13 @@ class LearningHomeScreen extends StatelessWidget {
                       color: AppColors.background,
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: const Center(
-                      child: Icon(
-                        Icons.person,
-                        size: 100,
-                        color: AppColors.lavender,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(30),
+                        child: Image.asset(
+                          'assets/icons/learner.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),

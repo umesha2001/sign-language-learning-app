@@ -83,11 +83,13 @@ class LessonDetailScreen extends StatelessWidget {
                                     color: AppColors.background,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  child: const Center(
-                                    child: Icon(
-                                      Icons.play_circle_outline,
-                                      size: 40,
-                                      color: AppColors.lavender,
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16),
+                                      child: Image.asset(
+                                        'assets/icons/more video.png',
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -194,10 +196,12 @@ class _TestImage extends StatelessWidget {
         color: AppColors.lightPurple,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Icon(
-        Icons.person,
-        size: 60,
-        color: AppColors.lavender,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Image.asset(
+          'assets/icons/test.png',
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }

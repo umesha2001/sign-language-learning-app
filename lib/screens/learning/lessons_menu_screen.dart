@@ -45,10 +45,12 @@ class LessonsMenuScreen extends StatelessWidget {
                     color: AppColors.white.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Icon(
-                    Icons.school,
-                    color: AppColors.white,
-                    size: 30,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Image.asset(
+                      'assets/icons/lession.png',
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -145,10 +147,12 @@ class _LessonCard extends StatelessWidget {
         leading: CircleAvatar(
           backgroundColor: AppColors.lavender.withOpacity(0.3),
           radius: 25,
-          child: const Icon(
-            Icons.person,
-            color: AppColors.lavender,
-            size: 30,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Image.asset(
+              'assets/icons/lession.png',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         title: Text(

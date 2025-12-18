@@ -12,13 +12,13 @@ class CharacterCustomizationScreen extends StatefulWidget {
 class _CharacterCustomizationScreenState extends State<CharacterCustomizationScreen> {
   int selectedAvatarIndex = 0;
 
-  final List<Map<String, dynamic>> avatars = [
-    {'icon': Icons.person, 'color': Color(0xFF8B7A9E)},
-    {'icon': Icons.person, 'color': Color(0xFF6B5B7B)},
-    {'icon': Icons.person, 'color': Color(0xFFB4A5C6)},
-    {'icon': Icons.person, 'color': Color(0xFF9B8BA8)},
-    {'icon': Icons.person, 'color': Color(0xFFC4A4D6)},
-    {'icon': Icons.person, 'color': Color(0xFF7B6B8B)},
+  final List<String> avatars = [
+    'assets/icons/1.png',
+    'assets/icons/2.png',
+    'assets/icons/3.png',
+    'assets/icons/4.png',
+    'assets/icons/5.png',
+    'assets/icons/6.png',
   ];
 
   @override
@@ -60,14 +60,23 @@ class _CharacterCustomizationScreenState extends State<CharacterCustomizationScr
             Container(
               width: 150,
               height: 150,
-              decoration: BoxDecoration(
-                color: avatars[selectedAvatarIndex]['color'],
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                avatars[selectedAvatarIndex]['icon'],
-                size: 100,
+              decoration: const BoxDecoration(
                 color: AppColors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x33000000),
+                    blurRadius: 20,
+                    offset: Offset(0, 10),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.all(15),
+              child: ClipOval(
+                child: Image.asset(
+                  avatars[selectedAvatarIndex],
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             
@@ -86,7 +95,6 @@ class _CharacterCustomizationScreenState extends State<CharacterCustomizationScr
                   ),
                   itemCount: avatars.length,
                   itemBuilder: (context, index) {
-                    final avatar = avatars[index];
                     final isSelected = index == selectedAvatarIndex;
                     
                     return GestureDetector(
@@ -97,16 +105,25 @@ class _CharacterCustomizationScreenState extends State<CharacterCustomizationScr
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: avatar['color'],
+                          color: AppColors.white,
                           shape: BoxShape.circle,
                           border: isSelected
-                              ? Border.all(color: AppColors.dark, width: 3)
-                              : null,
+                              ? Border.all(color: AppColors.primaryDark, width: 3)
+                              : Border.all(color: AppColors.lavender.withOpacity(0.3), width: 2),
+                          boxShadow: isSelected ? [
+                            const BoxShadow(
+                              color: Color(0x33000000),
+                              blurRadius: 10,
+                              offset: Offset(0, 5),
+                            ),
+                          ] : null,
                         ),
-                        child: Icon(
-                          avatar['icon'],
-                          size: 50,
-                          color: AppColors.white,
+                        padding: const EdgeInsets.all(10),
+                        child: ClipOval(
+                          child: Image.asset(
+                            avatars[index],
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     );

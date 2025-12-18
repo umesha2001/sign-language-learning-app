@@ -149,10 +149,12 @@ class _QuestionImage extends StatelessWidget {
         color: AppColors.white.withOpacity(0.5),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Icon(
-        Icons.person,
-        size: 40,
-        color: AppColors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Image.asset(
+          'assets/icons/quiz.png',
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }
