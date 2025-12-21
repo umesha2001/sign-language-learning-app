@@ -18,6 +18,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final _dobController = TextEditingController();
   final _countryController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
+  String? selectedAvatar;
 
   Future<void> _pickImage() async {
     showModalBottomSheet(
@@ -99,11 +100,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     color: AppColors.lavender.withOpacity(0.3),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
-                    Icons.person,
-                    size: 60,
-                    color: AppColors.lavender,
-                  ),
+                  child: selectedAvatar != null
+                      ? ClipOval(
+                          child: Image.asset(
+                            selectedAvatar!,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : const Icon(
+                          Icons.person,
+                          size: 60,
+                          color: AppColors.lavender,
+                        ),
                 ),
                 Positioned(
                   bottom: 0,
@@ -144,13 +152,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
+                onPressed: () async {
+                  final result = await Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const CharacterCustomizationScreen(),
                     ),
                   );
+                  
+                  if (result != null) {
+                    setState(() {
+                      selectedAvatar = result;
+                    });
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.lavender,

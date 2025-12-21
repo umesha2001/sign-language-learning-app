@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../home/home_screen.dart';
+import '../auth/login_screen.dart';
 import '../../core/constants/colors.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -85,7 +85,7 @@ class SplashScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
